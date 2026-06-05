@@ -26,6 +26,7 @@ btnPlay.addEventListener('click', () => {
 audio.addEventListener('play', () => {
   iconPlay.style.display = 'none';
   iconPause.style.display = 'block';
+  document.getElementById('lyricsScroll').style.visibility = 'visible';
 });
 audio.addEventListener('pause', () => {
   iconPlay.style.display = 'block';
@@ -66,18 +67,25 @@ function updateLyrics(t) {
     const time = parseFloat(lyricBlocks[i].dataset.time || 0);
     if (t >= time) active = lyricBlocks[i];
   }
+
   if (active && active !== currentActive) {
-    // Ẩn câu cũ
-    if (currentActive) {
-      currentActive.style.opacity = '0';
-      currentActive.style.transform = 'translateY(-16px)';
-      setTimeout(() => {
-        if (currentActive) currentActive.classList.remove('active');
-      }, 300);
-    }
-    // Hiện câu mới
+    const prev = currentActive;
+
+    // Ẩn TẤT CẢ các block trước (phòng trường hợp còn sót)
+    lyricBlocks.forEach(b => {
+      if (b !== active) {
+        b.style.opacity = '0';
+        b.style.transform = 'translateY(-16px)';
+        b.style.visibility = 'hidden';
+        b.classList.remove('active');
+      }
+    });
+
+    currentActive = active;
+
     setTimeout(() => {
       active.classList.add('active');
+      active.style.visibility = 'visible';
       active.style.opacity = '0';
       active.style.transform = 'translateY(16px)';
       requestAnimationFrame(() => {
@@ -86,8 +94,7 @@ function updateLyrics(t) {
           active.style.transform = 'translateY(0)';
         });
       });
-    }, currentActive ? 300 : 0);
-    currentActive = active;
+    }, prev ? 150 : 0);
   }
 }
 
@@ -97,3 +104,21 @@ lyricBlocks.forEach(block => {
     if (audio.paused) audio.play();
   });
 });
+
+// Hoa anh đào rơi
+const colors = ['#ffb7c5', '#ffc8d4', '#ff9eb5', '#ffd6e0', '#ffaec0'];
+
+for (let i = 0; i < 28; i++) {
+  const petal = document.createElement('div');
+  petal.classList.add('petal');
+
+  const size = Math.random() * 10 + 8;
+  petal.style.width = size + 'px';
+  petal.style.height = size + 'px';
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+  petal.style.animationDelay = Math.random() * 5 + 's';
+  petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+  document.body.appendChild(petal);
+}
