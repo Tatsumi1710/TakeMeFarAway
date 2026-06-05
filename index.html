@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Take Me Far Away – Even Call</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT: PLAYER -->
+  <div class="player-side">
+
+    <div class="song-header">
+      <div class="song-title">Take Me Far Away</div>
+      <div class="song-artist">Even Call</div>
+    </div>
+
+    <div class="album-art" id="albumArt">
+        <img src="../image/josee.jpg" alt="Album Art" />
+     
+      <div class="album-art-placeholder">♪</div>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-fill" id="progressFill"></div>
+      <div class="progress-thumb" id="progressThumb"></div>
+    </div>
+    <div class="time-row">
+      <span id="timeElapsed">0:00</span>
+      <span id="timeDuration">0:00</span>
+    </div>
+
+    <div class="controls">
+      <button class="btn-icon" onclick="seekRel(-10)" aria-label="Rewind 10s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/>
+        </svg>
+      </button>
+
+      <button class="btn-play" id="btnPlay" aria-label="Play/Pause">
+        <svg id="iconPlay" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <svg id="iconPause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </button>
+
+      <button class="btn-icon" onclick="seekRel(10)" aria-label="Forward 10s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="volume-row">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+      <input type="range" class="vol" id="volSlider" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
+    </div>
+
+  </div>
+
+  <!-- RIGHT: LYRICS -->
+  <div class="lyrics-side">
+    <div class="lyrics-label">Lyrics &amp; Vietsub</div>
+
+    <div class="lyrics-scroll" id="lyricsScroll">
+
+      <!-- ================================================ -->
+      <!-- 🔁 THAY LYRICS TẠI ĐÂY                          -->
+      <!-- data-time = số giây trong bài                    -->
+
+      <div class="lyric-block active" data-time="1">
+        <div class="en">Someone told me half and a day</div>
+        <div class="vi">Nhắm mắt lại và trôi dạt cùng anh</div>
+      </div>
+
+      <div class="lyric-block" data-time="8">
+        <div class="en">A voice from my dream</div>
+        <div class="vi">Bỏ lại sau lưng những ồn ào của hôm qua</div>
+      </div>
+
+      <div class="lyric-block" data-time="16">
+        <div class="en">Where the sky meets the open sea</div>
+        <div class="vi">Nơi bầu trời gặp gỡ biển cả mênh mông</div>
+      </div>
+
+      <div class="lyric-block" data-time="24">
+        <div class="en">That's where I want us to stay</div>
+        <div class="vi">Đó là nơi anh muốn chúng ta dừng lại</div>
+      </div>
+
+      <div class="lyric-block" data-time="34">
+        <div class="en">Take me far away, far away</div>
+        <div class="vi">Đưa anh đi thật xa, thật xa</div>
+      </div>
+
+      <div class="lyric-block" data-time="42">
+        <div class="en">Where the stars don't hide their light</div>
+        <div class="vi">Nơi những vì sao không còn che giấu ánh sáng</div>
+      </div>
+
+      <div class="lyric-block" data-time="50">
+        <div class="en">Hold my hand and we'll find our way</div>
+        <div class="vi">Nắm tay anh và chúng ta sẽ tìm thấy con đường</div>
+      </div>
+
+      <div class="lyric-block" data-time="60">
+        <div class="en">Through the silence of the night</div>
+        <div class="vi">Xuyên qua bóng tối của màn đêm im lặng</div>
+      </div>
+
+      <div class="lyric-block" data-time="70">
+        <div class="en">I've been running from the same old place</div>
+        <div class="vi">Anh đã chạy trốn khỏi nơi chốn quen thuộc ấy</div>
+      </div>
+
+      <div class="lyric-block" data-time="80">
+        <div class="en">A tired heart needs room to breathe</div>
+        <div class="vi">Một trái tim mệt mỏi cần không gian để thở</div>
+      </div>
+
+      <div class="lyric-block" data-time="90">
+        <div class="en">With you there's nothing left to chase</div>
+        <div class="vi">Có em ở đây, chẳng còn gì để đuổi theo nữa</div>
+      </div>
+
+      <div class="lyric-block" data-time="100">
+        <div class="en">Just you and me and the open breeze</div>
+        <div class="vi">Chỉ có anh và em và cơn gió thoáng qua</div>
+      </div>
+
+      <div class="lyric-block" data-time="110">
+        <div class="en">Take me far away, far away</div>
+        <div class="vi">Đưa anh đi thật xa, thật xa</div>
+      </div>
+
+      <div class="lyric-block" data-time="120">
+        <div class="en">Where the stars don't hide their light</div>
+        <div class="vi">Nơi những vì sao không còn che giấu ánh sáng</div>
+      </div>
+
+      <div class="lyric-block" data-time="130">
+        <div class="en">Hold my hand and we'll find our way</div>
+        <div class="vi">Nắm tay anh và chúng ta sẽ tìm thấy con đường</div>
+      </div>
+
+      <div class="lyric-block" data-time="140">
+        <div class="en">Through the silence of the night</div>
+        <div class="vi">Xuyên qua bóng tối của màn đêm im lặng</div>
+      </div>
+
+      <div class="lyric-block" data-time="152">
+        <div class="en">Far away… far away…</div>
+        <div class="vi">Thật xa… thật xa…</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 🔁 Thay "song.mp3" bằng tên file nhạc của bạn -->
+<audio id="audio" src="TakeMeFarAway.mp3" preload="metadata"></audio>
+
+<script src="music.js"></script>
+</body>
+</html>
