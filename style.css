@@ -1,12 +1,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent: #6c8cbf;
+  --accent: #508ef1;
   --accent2: #a8c4e0;
   --text: #1c1e26;
   --text-muted: #7a8093;
-  --bg: #f0f2f7;
-  --surface: #ffffff;
+ --bg: #fce4e4;
+--surface: #fdf0f0;
   --border: #e2e6f0;
   --radius: 18px;
 }
@@ -210,19 +210,19 @@ input[type=range].vol::-webkit-slider-thumb {
 }
 .lyric-block .en {
   font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--accent);
+  font-size: 2rem;
+  color: #fcd602;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8);
   line-height: 1.55;
   margin-bottom: 10px;
 }
 .lyric-block .vi {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8);
   line-height: 1.6;
 }
-
 /* Responsive */
 @media (max-width: 720px) {
   .page { flex-direction: column; }
@@ -231,8 +231,23 @@ input[type=range].vol::-webkit-slider-thumb {
 }
 
 .lyrics-side {
+  position: relative;
   background-image: url('../image/tigerandfish.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.lyrics-side::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);  /* ← tăng số này để tối hơn, giảm để sáng hơn */
+  z-index: 0;
+}
+
+.lyrics-label,
+.lyrics-scroll {
+  position: relative;
+  z-index: 1;  /* ← để chữ nằm trên overlay */
 }
