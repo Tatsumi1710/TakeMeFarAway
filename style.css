@@ -232,7 +232,7 @@ input[type=range].vol::-webkit-slider-thumb {
 
 .lyrics-side {
   position: relative;
-  background-image: url('../image/tigerandfish.jpg');
+  background-image: url('image/tigerandfish.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
